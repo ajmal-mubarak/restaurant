@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Delicious Bites Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            display: block;
+        }
+        header {
+            background-color: #333;
+            line-height: 0.8;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        #types {
+            background-color: black;
+        }
+        #type {
+            background-color: #000000;
+            text-align: center;
+            position: relative;
+        }
+        #jtype {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        #jtype a {
+            color: white;
+            display: inline-block;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        #jtype a:hover {
+            background-color: #555;
+        }
+        #navbr {
+            background-color: #444;
+            text-align: center;
+            position: relative;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: white;
+            display: inline-block;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .nav-links a:hover {
+            background-color: #555;
+        }
+        .toggle-btn {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 14px 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 10px auto;
+        }
+        h2 {
+            border-bottom: 2px solid #f4a261;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .menu-item {
+            margin-bottom: 15px;
+        }
+        .menu-item h3 {
+            margin: 0;
+        }
+        .menu-item p {
+            margin: 5px 0 0;
+        }
+        .chef {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .chef img {
+            width: 550px;
+        }
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .photos img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        .juice img {
+            width: 15%;
+            height: 100%;
+            border-radius: 5px;
+        }
+        #juice {
+            display: block;
+            padding: 20px;
+        }
+        #snacks {
+            display: block;
+            padding: 20px;
+        }
+        #food {
+            display: block;
+            padding: 20px;
+        }
+        #drinks {
+            display: block;
+            padding: 20px;
+        }
+        .juice {
+            width: 60%;
+            height: 15%;
+            display: flex;
+            margin: 10px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #444;
+            }
+            .toggle-btn {
+                display: block;
+                color: rgb(255, 255, 255);
+                margin-top: -60px;
+            }
+            .chef {
+                flex-direction: column;
+                text-align: center;
+            }
+            .chef img {
+                width: 320px;
+            }
+            .juice img {
+                width: 35%;
+                height: 100%;
+                border-radius: 5px;
+            }
+            #juice {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+            #snacks {
+                display: block;
+                padding: 20px;
+            }
+            #food {
+                display: block;
+                padding: 20px;
+            }
+            #drinks {
+                display: block;
+                padding: 20px;
+            }
+            .juice {
+                width: 95%;
+                height: 15%;
+                display: flex;
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+        @media (max-width: 1168px) {
+            .chef {
+                flex-direction: column;
+                text-align: center;
+            }
+            .chef img {
+                width: 320px;
+            }
+            .juice img {
+                width: 25%;
+                height: 100%;
+                border-radius: 5px;
+            }
+            #juice {
+                display: block;
+                padding: 20px;
+            }
+            #snacks {
+                display: block;
+                padding: 20px;
+            }
+            #food {
+                display: block;
+                padding: 20px;
+            }
+            #drinks {
+                display: block;
+                padding: 20px;
+            }
+            .juice {
+                width: 70%;
+                height: 15%;
+                display: flex;
+                margin: 10px;
+                margin-bottom: 10px;
+                margin-left: 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .toggle-btn {
+                display: block;
+                color: rgb(255, 255, 255);
+                margin-top: -60px;
+            }
+            header h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            .menu-item h3 {
+                font-size: 16px;
+            }
+            .photos {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .juice {
+                width: 95%;
+                height: 15%;
+                display: flex;
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Delicious Bites</h1>
+        <p>Experience the finest flavors!</p>
+    </header>
+
+    <nav id="navbr">
+        <div class="toggle-btn" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" onclick="types()">Menu</a>
+            <a href="#chef">About the Chef</a>
+            <a href="#photos">Photos</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <div id="types" style="display: none;">
+        <nav id="type">
+            <div id="jtype">
+        <a href="#" onclick="juice()">Juice</a>
+        <a href="#" onclick="snacks()">Snacks</a>
+        <a href="#" onclick="food()">Food</a>
+        <a href="#" onclick="drinks()">Drinks</a>
+            </div>
+        </nav>
+    </div>
+<div id="con" style="display: flex;margin-bottom: 10px;font-size: smaller;">
+    <div id="juice" style="display: none;">
+        <div class="juice">
+           <img src="juice1.jpeg" alt="1">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Orange</h1>
+           <h3>Rate: 40</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="juice2.jpg" alt="2">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Grape</h1>
+           <h3>Rate: 40</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="juice3.jpg" alt="3">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Strawberry</h1>
+           <h3>Rate: 50</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="juice4.jpg" alt="4">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Mint</h1>
+           <h3>Rate: 30</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="cjuice5.jpg" alt="5">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Combo juices</h1>
+           <h3>Rate: 220</h3>
+           </div>
+        </div>
+    </div>
+    <div id="snacks" style="display: none;">
+        <div class="juice">
+           <img src="snack1.webp" alt="1">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Unnakkaya</h1>
+           <h3>Rate: 13</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="snack2.avif" alt="2">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Parippuvada</h1>
+           <h3>Rate: 10</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="snack3.jpg" alt="3">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Elanji</h1>
+           <h3>Rate: 18</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="snack4.webp" alt="4">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Uyunnuvada</h1>
+           <h3>Rate: 12</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="snack5.jpg" alt="5">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Payampori</h1>
+           <h3>Rate: 12</h3>
+           </div>
+        </div>
+    </div>
+    <div id="food" style="display: none;">
+        <div class="juice">
+           <img src="item1.jpg" alt="1">
+            <div style="display: block;margin-left: 30px;">
+           <h1>Chicken biriyani</h1>
+           <h3>Rate: 120</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="item2.jpeg" alt="2">
+            <div style="display: block;margin-left: 30px;">
+           <h1>Kubboos combo</h1>
+           <h3>Rate: 80</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="item3.jpg" alt="3">
+            <div style="display: block;margin-left: 30px;">
+           <h1>Masaladosha</h1>
+           <h3>Rate: 60</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="item4.jpeg" alt="4">
+            <div style="display: block;margin-left: 30px;">
+           <h1>Sandwich</h1>
+           <h3>Rate: 140</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="item5.jpeg" alt="5">
+            <div style="display: block;margin-left: 30px;">
+           <h1>puri combo</h1>
+           <h3>Rate: 40</h3>
+           </div>
+        </div>
+    </div>
+    <div id="drinks" style="display: none;">
+        <div class="juice">
+           <img src="drink1.jpg" alt="1">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Kattan</h1>
+           <h3>Rate: 10</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="drinks2.webp" alt="2">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Sulaimani</h1>
+           <h3>Rate: 15</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="drinks3.jpg" alt="3">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Grren Tea</h1>
+           <h3>Rate: 20</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="drinks4.jpg" alt="4">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Tea</h1>
+           <h3>Rate: 10</h3>
+           </div>
+        </div>
+        <div class="juice">
+           <img src="drinks5.webp" alt="5">
+           <div style="display: block;margin-left: 30px;">
+           <h1>Coffee</h1>
+           <h3>Rate: 25</h3>
+           </div>
+        </div>
+    </div>
+</div>
+<div id="con2" style="margin-top: 10px;">
+
+    <section id="menu">
+        <h2>TODAY SPECIALS</h2>
+        <div class="menu-item">
+            <h3>Grilled Salmon</h3>
+            <p>Fresh Atlantic salmon grilled to perfection with herbs.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Classic Pasta</h3>
+            <p>Pasta tossed in rich tomato and basil sauce, topped with cheese.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Caesar Salad</h3>
+            <p>Crisp romaine lettuce, parmesan, croutons, and signature dressing.</p>
+        </div>
+    </section>
+
+    <section id="chef">
+        <h2>About the Chef</h2>
+        <div class="chef">
+            <img src="chef.jpg" alt="Chef Photo">
+            <div>
+                <h3>Chef Roberto Carlos</h3>
+                <p>With over 20 years of culinary experience, Chef Mario brings passion and creativity to every dish. His philosophy is to combine fresh ingredients with bold flavors to create unforgettable dining experiences.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="photos">
+        <h2>Main Dish's</h2>
+        <div class="photos">
+            <img src="item1.jpg" alt="Dish 1">
+            <img src="item2.jpeg" alt="Dish 2">
+            <img src="item3.jpg" alt="Dish 3">
+            <img src="item4.jpeg" alt="Dish 4">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: abc@gmil.com</p>
+        <p>Phone: +91 12345 67899</p>
+        <p>Address: 670704 SM Street, kannur City</p>
+    </section>
+
+    <footer>
+        &copy; 2025 Delicious Bites Restaurant. All rights reserved.
+    </footer>
+</div>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks.style.display === "flex") {
+            navLinks.style.display = "none";
+        } else {
+            navLinks.style.display = "flex";
+        }
+    }
+
+    function types() {
+        const typesDiv = document.getElementById("types");
+        if (typesDiv.style.display === "block") {
+            typesDiv.style.display = "none";
+        } else {
+            typesDiv.style.display = "block";
+        }
+    }
+
+    function juice() {
+        const juiceDiv = document.getElementById("juice");
+        const isVisible = juiceDiv.style.display === "block";
+        
+        document.getElementById("juice").style.display = isVisible ? "none" : "block";
+        document.getElementById("snacks").style.display = "none";
+        document.getElementById("food").style.display = "none";
+        document.getElementById("drinks").style.display = "none";
+    }
+
+    function snacks() {
+        const snacksDiv = document.getElementById("snacks");
+        const isVisible = snacksDiv.style.display === "block";
+        
+        document.getElementById("snacks").style.display = isVisible ? "none" : "block";
+        document.getElementById("juice").style.display = "none";
+        document.getElementById("food").style.display = "none";
+        document.getElementById("drinks").style.display = "none";
+    }
+
+    function food() {
+        const foodDiv = document.getElementById("food");
+        const isVisible = foodDiv.style.display === "block";
+        
+        document.getElementById("food").style.display = isVisible ? "none" : "block";
+        document.getElementById("juice").style.display = "none";
+        document.getElementById("snacks").style.display = "none";
+        document.getElementById("drinks").style.display = "none";
+    }
+
+    function drinks() {
+        const drinksDiv = document.getElementById("drinks");
+        const isVisible = drinksDiv.style.display === "block";
+        
+        document.getElementById("drinks").style.display = isVisible ? "none" : "block";
+        document.getElementById("juice").style.display = "none";
+        document.getElementById("snacks").style.display = "none";
+        document.getElementById("food").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
+
