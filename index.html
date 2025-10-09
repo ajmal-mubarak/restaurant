@@ -9,15 +9,34 @@
             font-family: Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
+            background-color: #e6e6e6;
             color: #333;
             display: block;
         }
         header {
-            background-color: #333;
+            background-image: url("topback.jpg");
             line-height: 0.8;
             color: white;
+            height: 200px;
             padding: 10px 0;
             text-align: center;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 220px;
+            background: rgba(0, 0, 0, 0.753);
+            z-index: 0;
+        }
+        header * {
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            margin-top:70px;
         }
         #types {
             background-color: black;
